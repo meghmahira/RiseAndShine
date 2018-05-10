@@ -9,7 +9,7 @@ Your system must have MongoDB and node
 #### MongoDB
 If you do not have MongoDB, download and install MongoDB from [https://www.mongodb.com/download-center](https://www.mongodb.com/download-center)
 After you are done installing and configuring your MongoDB server (make sure it listens to port 27017), 
-- Create a database with the name "inFeedo"
+- Create a database with the name "RiseAndShine"
 - Create two collections "clients" and "users"
 - Use the samples given under the /resources directory to populate the collections with data
 
