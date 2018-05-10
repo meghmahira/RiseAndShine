@@ -21,7 +21,7 @@ function getTimeZones() {
 
     let timeOffsets = [];
 
-    if (currentUTCHour == 8) {
+    if (currentUTCHour == 8 && currentUTCMinute < 15) {
         timeOffsets = timeOffsets.concat(["UTC-0", "UTC", "UTC+0"]);
     }
     else if (currentUTCHour < 8) {

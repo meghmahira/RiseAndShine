@@ -2,7 +2,7 @@ const mongodb = require("mongodb");
 const goodMorningMailerModule = require("./app/goodMoringMailer");
 
 const dbUrl = "mongodb://localhost:27017";
-const dbName = "inFeedo";
+const dbName = "RiseAndShine";
 
 mongodb.connect(dbUrl, (error, client) => {
     if (error) throw error;
