@@ -14,7 +14,7 @@ After you are done installing and configuring your MongoDB server (make sure it 
 - Use the samples given under the /resources directory to populate the collections with data
 
 #### node^8.11.1
-If you do not have Node.js, dowmload and install Node.js from [https://nodejs.org/en/](https://nodejs.org/en/)
+If you do not have Node.js, download and install Node.js from [https://nodejs.org/en/](https://nodejs.org/en/)
 
 Run ```npm install``` in project directory to install all the dependencies.
 
