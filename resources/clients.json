@@ -1,0 +1,62 @@
+[
+  {
+    "clientId": "C001",
+    "company": "Wonka Industries",
+    "industry": "Food and Confectioneries",
+    "owner": "Willy Wonka",
+    "email": "support@wonkaindustries.com",
+    "address": "Unit, Floor, Building, Street",
+    "city": "City",
+    "state": "State",
+    "country": "Country",
+    "zip": "10001"
+  },
+  {
+    "clientId": "C002",
+    "company": "Stark Industries",
+    "industry": "Advanced Machines",
+    "owner": "Tony Stark",
+    "email": "support@starkindustries.com",
+    "address": "Unit, Floor, Building, Street",
+    "city": "City",
+    "state": "State",
+    "country": "Country",
+    "zip": "10001"
+  },
+  {
+    "clientId": "C003",
+    "company": "Wayne Enterprises",
+    "industry": "Advanced Machines",
+    "owner": "Bruce Wayne",
+    "email": "support@wayneenterprises.com",
+    "address": "Unit, Floor, Building, Street",
+    "city": "City",
+    "state": "State",
+    "country": "Country",
+    "zip": "10001"
+  },
+  {
+    "clientId": "C004",
+    "company": "Burns Industries",
+    "industry": "Nuclear Energy",
+    "owner": "Charles Montgomery Burns",
+    "email": "support@wayneenterprises.com",
+    "address": "Unit, Floor, Building, Street",
+    "city": "City",
+    "state": "State",
+    "country": "Country",
+    "zip": "10001"
+  },
+  {
+    "clientId": "C005",
+    "company": "Gekko & Co.",
+    "industry": "Finance",
+    "owner": "Gordon Gekko",
+    "email": "support@wayneenterprises.com",
+    "address": "Unit, Floor, Building, Street",
+    "city": "City",
+    "state": "State",
+    "country": "Country",
+    "zip": "10001"
+  }
+]

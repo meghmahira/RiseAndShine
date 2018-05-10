@@ -1,0 +1,17 @@
+{
+  "name": "riseandshine",
+  "version": "0.0.0",
+  "description": "Rise And Shine: 8:00 A.M. greetings according to recepient's time zone",
+  "main": "server.js",
+  "author": "Meghma Hira",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "moment-timezone": "^0.5.16",
+    "mongodb": "^3.0.8",
+    "nodemailer": "^4.6.4",
+    "q": "^1.5.1"
+  }
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "name": "John Doe",
+    "email": "johndoe@gmail.com",
+    "address": "Unit, Floor, Building, Street",
+    "city": "City",
+    "state": "State",
+    "country": "Country",
+    "zip": "10001",
+    "utcOffset": "UTC+570",
+    "companyId": "C002"
+  },
+  {
+    "name": "Micheal Scofield",
+    "email": "micheal9876@prisonbreak.com",
+    "address": "Unit, Floor, Building, Street",
+    "city": "City",
+    "state": "State",
+    "country": "Country",
+    "zip": "10001",
+    "utcOffset": "UTC+570",
+    "companyId": "C002"
+  },
+  {
+    "name": "Dean Winchester",
+    "email": "deanwinchester@supernatural.com",
+    "address": "Unit, Floor, Building, Street",
+    "city": "City",
+    "state": "State",
+    "country": "Country",
+    "zip": "10001",
+    "utcOffset": "UTC+615",
+    "companyId": "C005"
+  },
+  {
+    "name": "Sam Winchester",
+    "email": "samwinchester@supernatural.com",
+    "address": "Unit, Floor, Building, Street",
+    "city": "City",
+    "state": "State",
+    "country": "Country",
+    "zip": "10001",
+    "utcOffset": "UTC-120",
+    "companyId": "C004"
+  },
+  {
+    "name": "Arya Stark",
+    "email": "arya@facelessmen.com",
+    "address": "Unit, Floor, Building, Street",
+    "city": "City",
+    "state": "State",
+    "country": "Country",
+    "zip": "10001",
+    "utcOffset": "UTC-570",
+    "companyId": "C001"
+  }
+]
