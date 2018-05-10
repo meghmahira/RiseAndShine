@@ -3,7 +3,6 @@
 const moment = require("moment-timezone");
 const Q = require("q");
 const nodemailer = require("nodemailer");
-let db = null;
 
 function getTimeZones() {
     const zone = "UTC";
@@ -48,7 +47,7 @@ function getTimeZones() {
 
 function listUsers(utcOffsets) {
     let deferred = Q.defer();
-    db.collection("users").aggregate([
+    this.db.collection("users").aggregate([
         {
             "$match": {
                 "utcOffset": {
@@ -79,7 +78,7 @@ function listUsers(utcOffsets) {
 
 function getClient(userDetail) {
     let deferred = Q.defer();
-    db.collection("clients").findOne({"clientId": userDetail._id}, (error, clientDetails) => {
+    this.db.collection("clients").findOne({"clientId": userDetail._id}, (error, clientDetails) => {
         if (error) {
             return deferred.reject(error);
         }
@@ -93,10 +92,11 @@ function getClient(userDetail) {
 }
 
 function getClientDetails(users) {
+    const _this = this;
     let deffered = Q.defer();
     let allPromises = [];
     users.forEach((user) => {
-        allPromises.push(getClient(user));
+        allPromises.push(getClient.call(_this, user));
     });
     Q.all(allPromises).then((allClients) => {
         let allUsers = [];
@@ -163,21 +163,20 @@ function sendMailers(users) {
 class GoodMorningMailerCtrl {
 
     execute(dbConnection) {
-        let deferred = Q.defer();
+        this.db = dbConnection;
+        const _this = this;
 
-        if (!dbConnection) {
-            deferred.reject("Database connection not received in argument");
-        }
-        db = dbConnection;
+        let deferred = Q.defer();
 
         let utcOffsets = getTimeZones();
         console.log("UTC Offsets: ", utcOffsets);
         if (!(utcOffsets && utcOffsets.length)) {
             deferred.reject("Error while calculating timezone offsets");
         }
-        listUsers(utcOffsets)
-            .then(getClientDetails)
-            .then(sendMailers)
+
+        listUsers.call(_this, utcOffsets)
+            .then(getClientDetails.bind(_this))
+            .then(sendMailers.bind(_this))
             .then((response) => {
                 if (response && response.length) {
                     deferred.resolve("Mails sent to users successfully");
