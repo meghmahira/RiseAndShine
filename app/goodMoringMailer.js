@@ -18,21 +18,24 @@ function getTimeZones() {
     let currentUTCHour = now.format("H");
     let currentUTCMinute = now.format("mm");
     now.set({"minute": currentUTCMinute - (currentUTCMinute % 15), "second": 0, "millisecond": 0},);
-    //console.log("Current UTC Time: ", now.format());
-    if (currentUTCHour < 8) {
+
+    let timeOffsets = [];
+
+    if (currentUTCHour == 8) {
+        timeOffsets = timeOffsets.concat(["UTC-0", "UTC", "UTC+0"]);
+    }
+    else if (currentUTCHour < 8) {
         wishTimeWest = moment(wishTimeWest).subtract(1, "day");
     }
     else {
         wishTimeEast = moment(wishTimeEast).add(1, "day");
     }
 
-    //console.log("Wish Time West: ", wishTimeWest.format());
-    //console.log("Wish Time East: ", wishTimeEast.format());
+    console.log("Wish Time West: ", wishTimeWest.format());
+    console.log("Wish Time East: ", wishTimeEast.format());
 
     let westernOffset = now.diff(wishTimeWest, "minutes");
     let easternOffset = wishTimeEast.diff(now, "minutes");
-
-    let timeOffsets = [];
 
     if (westernOffset && Math.abs(westernOffset) <= westernMostOffset) {
         timeOffsets.push("UTC-" + westernOffset);
@@ -126,14 +129,15 @@ function sendMailersToUser(user) {
         }
     });
     const mailOptions = {
-        "from": "Rise And Shine 🌞 <" + user.companyEmail + ">",
+        "from": "Rise And Shine 🌞 <riseandshineapplication@gmail.com>",
         "to": user.name + "<" + user.email + ">",
         "subject": "Good Morning, " + user.name + "!",
         "html": "<p>Hello " + user.name + ",</p>" +
         "<p>" + user.companyOwner + " from " + user.companyName + ", wishes you a great day ahead!</p>" +
         "<p>With Regards, <br>" + user.companyName + "</p>"
     };
-    transporter.sendMail(mailOptions, (info) => {
+    transporter.sendMail(mailOptions, (error, info) => {
+        //console.log(error, error)
         if (!(info && info.messageId)) {
             return deferred.resolve("Mail not sent");
         }
@@ -149,7 +153,7 @@ function sendMailers(users) {
         allPromises.push(sendMailersToUser(user));
     });
     Q.all(allPromises).then((allResolves) => {
-        deffered.resolve("Mails sent to users successfully");
+        deffered.resolve(allResolves);
     }).catch((error) => {
         deffered.reject(error);
     });
@@ -174,8 +178,13 @@ class GoodMorningMailerCtrl {
         listUsers(utcOffsets)
             .then(getClientDetails)
             .then(sendMailers)
-            .then((response)=>{
-                deferred.resolve(response);
+            .then((response) => {
+                if (response && response.length) {
+                    deferred.resolve("Mails sent to users successfully");
+                }
+                else {
+                    deferred.reject("Error while sending mails to users");
+                }
             })
             .catch((error) => {
                 deferred.reject(error);

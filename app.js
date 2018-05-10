@@ -11,7 +11,7 @@ mongodb.connect(dbUrl, (error, client) => {
     const delay = 15 * 60 * 1000; //executing every 15 minutes
 
     function sendMailers() {
-        console.log("Executing Mailer at " + new Date());
+        console.log("Executing Mailer at " + new Date().toUTCString());
         let goodMorningMailer = new goodMorningMailerModule();
         goodMorningMailer.execute(db).then((response) => {
             console.log("Resolve: ", response);
